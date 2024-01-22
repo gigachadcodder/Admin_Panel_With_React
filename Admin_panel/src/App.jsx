@@ -1,14 +1,22 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import { Header } from './components/Header'
+import { Sidebar } from './components/Sidebar'
+import { Home } from './components/Home'
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+
+  const OpenSidebar = () =>{
+    setOpenSidebarToggle(!openSidebarToggle)
+  }
   return (
-    <div className='bg-red-400 text-center p-4 align-baseline'>
-      Hello world this is the first but he best admin panel
+    <div className='grid-continer'>
+      <Header openSidebar = {OpenSidebar}/>
+      <Sidebar openSidebarToggle = {openSidebarToggle} openSidebar = {OpenSidebar} />
+      <Home/>
     </div>
   )
 }
